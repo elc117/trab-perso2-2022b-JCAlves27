@@ -44,8 +44,9 @@ O mesmo é um framewor muito utilizado para a programação web em elixir. O mes
 
 #### Créditos:
 
-Material [Github sobre Elixir]
-(https://github.com/jaya/elixir-starter)
+https://elixir-lang.org/
+
+https://github.com/jaya/elixir-starter
 
 https://elixirschool.com/en/lessons/specifics/plug/
 
