@@ -1,1 +1,1 @@
-IO.puts "Olá Paradigmas"
+IO.puts "Olá Paradigmas, vamos hoje falar de elixir!!!"
