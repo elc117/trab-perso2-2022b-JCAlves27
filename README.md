@@ -55,10 +55,26 @@ Codigo exemplo
 
 ----------
 
-#### Código desenvolvido:
+#### Códigos desenvolvidos:
 
-Replit: 
+Um exemplo de Funções nomeadas:
+```
+COdigo será inserido aqui
+```
 
+<br>
+
+Um exemplo de Funções anônimas:
+```
+Código sera inserido aqui
+```
+
+<br>
+
+Um exemplo de Funções Privadas:  
+```
+COdigo será inserido aqui
+```
 
 ---
 
