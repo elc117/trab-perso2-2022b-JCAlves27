@@ -17,6 +17,8 @@ Os módulos são responsáveis por manter e organizar as funções dentro de um 
 <br>
 
 #### Como se declara uma função Nomeadas em Elixir:
+Uma função nomeada é dada pelo nome da váriavel, seus argumentos e o corpo da função. Ela pode ser utilizada de forma global entre os módulos, sendo acessada de qualquer parte do código.
+
 
 <p align="justify">Para declarar uma função utilizamos o def em elixir, para entender melhor usaremos a seguinte sintaxe:</p>
 
@@ -27,11 +29,11 @@ Os módulos são responsáveis por manter e organizar as funções dentro de um 
 ```
 
 
-**do** nesse caso é usado para delimitar o corpo da função, o bloco de código que será executado quando a função for chamda.
+**do** nesse caso é usado para delimitar o corpo da função, o bloco de código que será executado quando a função for chamada.
 <br>
 <br>
 #### Como se declarar funções anônimas em Elixir:
-<p align="justify">Funções anonimas como seu nome diz elas geralmente não tem nomes especificos. Elas são utilizadas para passar funções para outras funções de maneira mais rápida, sem precisar declarar inúmeras vezes por exemplo uma caracteristica para uma função, você geraria uma nova que faria esse papel de dar as caracteristicas. As mesmas são dadas como de primeira classe, em outras palavras isso é, podem ser passadas como argumentos para outras funções e também servir de retorno.
+<p align="justify"> As funções anônimas são uma forma de criar e passar funções "inline" sem ter que dar-lhes um nome explícito. Elas podem ser usadas quando você precisa passar uma função como argumento para outra função ou atribuí-la a uma variável, mas não precisa de um nome para ela.
 
 Sua declaração de sintaxe se da pelas palavras fn e end.Onde toda operação da função e atribuições serão feita entre ambas palavras na hora de declarar:</p>
 
@@ -40,43 +42,83 @@ nome_da_variavel = fn argumento1, argumento2 -> Código a ser executado
 end
 ```
 
-<p align="justify">Lembrando que se eu considerar parametro1 = a, parametro2 = b, e desejar fazer a soma deles, iria acrescentar ao corpo da função nome_da_váriavel.(4, 5), o resultado seria: 9, pois estou considerando a = 4 e B = 5. Também podemos afirmar que dentro de um map consigo acessar todos os dados apenas em uma linha ou duas de código acrescentando uma função anonima.</p>
-<br>
-
 #### Como se declarar funções privadas em Elixir:
 
-<p align="justify">Está é responsável para quando não quisermos que as funções especificas não sejam acessadas globalmente em módulos, a gente a transforma em privada. Fazendo com que ela só pode ser acessada diretamente dentro de seu módulo e não mais globalmente.
+<p align="justify">Está é responsável para quando não quisermos que as funções especificas não sejam acessadas globalmente em módulos, a gente a transforma em privada. Fazendo com que ela só pode ser acessada diretamente dentro de seu módulo e não mais globalmente. Ela sempre será declara antes da função pública, onde ela sempre será chamada dentro do módulo.
 
 Ela é definida por defp, como será implementado no exemplo a baixo:</p>
 
 ```
-Codigo exemplo
+defmodule MyModule do
+  privada
+  defp privada_func do
+    # código da função privada
+  end
 ```
 
 ----------
 
 #### Códigos desenvolvidos:
 
-Um exemplo de Funções nomeadas:
+*Um exemplo de Funções nomeadas*:
 ```
-COdigo será inserido aqui
+def soma(num1, num2) do
+  num1 + num2
+end
+
+resultado = soma(2, 3)
 ```
 
 <br>
 
-Um exemplo de Funções anônimas:
+*Um exemplo de Funções anônimas*:
 ```
-Código sera inserido aqui
+soma = fn (num1, num2) -> num1 + num2 end
+resultado = soma.(2, 3)
+
 ```
+
+**Vamos observar algumas coisas**:
+
+1. Podemos notar as variavéis num1 e num2 dentro de fn e end que determina a função anônima.
+2. Soma aqui é o nome dado a váriavel anonima.
+3. Para chamar a função basta passar os argumentos para a váriavel soma.
+4. O ponto na linha de código soma.(2,3) está sendo usado para chamar a função anônima.
+5. O código ele está somando dois números então quando atribui 2 e 3 o resultado final será 5. Assim como eu atribuir outros valores a num1 e num2.
 
 <br>
 
-Um exemplo de Funções Privadas:  
+*Um exemplo de Funções Privadas*:  
 ```
-COdigo será inserido aqui
+defmodule MyModule do
+  privada
+  defp privada_func(num1, num2) do
+    num1 + num2
+  end
+
+  def public_func(num1, num2) do
+    privada_func(num1, num2)
+  end
+end
 ```
+
+**Vamos observar algumas coisas**:
+
+1. Como citado a função defp ela está declarada dentro do modulo (defmodule MyModule).
+2. Podemos notar que logo em seguida vem a função publica(global).
+3. Nestre exemplo a função privada esta somando dois números. E só é possivel acessar ela dentro do módulo.
+4. Public_func é a função pública que esta usando a privada.
 
 ---
+
+#### Empresas e aplicativos que usam Elixir:
+
+1. Adobe
+2. Discord (Aplicativo)
+3. Whatsapp (Aplicativo)
+4. Pinterest
+
+   <br>
 
 #### Bibliotecas Recomendadas em Elixir:
 
@@ -93,9 +135,10 @@ __Phoenix__:
 
 ---
 
-#### **Créditos**:
+#### **Referências**:
 
 
 * https://github.com/jaya/elixir-starter
 * https://elixirschool.com/en/lessons/specifics/plug/
 * https://elixirschool.com/en/lessons/specifics/ecto/
+* https://coodesh.com/blog/candidates/carreiras/por-que-e-interessante-se-tornar-um-desenvolvedor-elixir/
